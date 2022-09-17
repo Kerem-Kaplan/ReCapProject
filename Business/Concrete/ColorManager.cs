@@ -21,11 +21,14 @@ namespace Business.Concrete
         public void Add(Color color)
         {
             _colorDal.Add(color);
+            Console.WriteLine("Renk eklendi");
         }
 
         public void Delete(Color color)
         {
             _colorDal.Delete(color);
+
+            Console.WriteLine("Renk silindi");
         }
 
         public List<Color> GetAll()
@@ -35,12 +38,13 @@ namespace Business.Concrete
 
         public Color GetById(int colorId)
         {
-            return _colorDal.Get(c => c.ID == colorId);
+            return _colorDal.Get(c => c.ColorId == colorId);
         }
 
         public void Update(Color color)
         {
             _colorDal.Update(color);
+            Console.WriteLine("Renk guncellendi");
         }
     }
 }

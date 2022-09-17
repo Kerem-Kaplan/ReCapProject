@@ -22,6 +22,7 @@ namespace Business.Concrete
         public void Add(Car car)
         {
             _carDal.Add(car);
+            Console.WriteLine("Arac basarıyla eklenmiştir.");
         }
 
         public void Delete(Car car)
@@ -52,6 +53,7 @@ namespace Business.Concrete
         public void Update(Car car)
         {
             _carDal.Update(car);
+            Console.WriteLine("Arac guncellendi");
         }
     }
 }
