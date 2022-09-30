@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants;
 using Business.Constants.CarMessages;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
@@ -23,7 +24,22 @@ namespace ConsoleUI
             //ColorAdd();
             //ColorDelete();
             //ColorUpdate();
+            //UserAdd();
+            //RentalAdd();
+        }
 
+        private static void RentalAdd()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            rentalManager.Add(new Rental { CarId = 1, CustomerId = 1, RentDate = new DateTime(2022, 10, 08), ReturnDate = new DateTime(2023, 01, 15) });
+            Console.WriteLine(RentalMessages.RentalAdded);
+        }
+
+        private static void UserAdd()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User { FirstName = "Mahmut", LastName = "Veli", Email = "ali@gmail.com", Password = "12345" });
+            Console.WriteLine(UserMessages.UserAdded);
         }
 
         private static void ColorUpdate()
