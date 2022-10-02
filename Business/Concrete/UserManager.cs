@@ -23,7 +23,7 @@ namespace Business.Concrete
         public IResult Add(User user)
         {
             _userDal.Add(user);
-            return new SuccessResult();
+            return new SuccessResult(UserMessages.UserAdded);
         }
 
         public IResult Delete(User user)
@@ -49,6 +49,7 @@ namespace Business.Concrete
 
         public IResult Update(User user)
         {
+            _userDal.Update(user);
             return new SuccessResult(UserMessages.UserUpdated);
         }
     }
