@@ -5,6 +5,7 @@ using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
+using Core.Entities.Concrete;
 
 namespace ConsoleUI
 {
@@ -38,7 +39,7 @@ namespace ConsoleUI
         private static void UserAdd()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User { FirstName = "Mahmut", LastName = "Veli", Email = "ali@gmail.com", Password = "12345" });
+            userManager.Add(new User { FirstName = "Mahmut", LastName = "Veli", Email = "ali@gmail.com" });
             Console.WriteLine(UserMessages.UserAdded);
         }
 

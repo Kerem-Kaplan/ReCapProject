@@ -36,7 +36,7 @@ namespace Business.Concrete
                 return result;
             }
 
-            carImage.ImagePath = _fileHelper.Upload(formFile, @"wwwroot\\Uploads\\Images\\");
+            carImage.ImagePath = _fileHelper.Upload(formFile, @"wwwroot\\Images\\");
             //if (carImage.ImagePath == null)
             //{
             //    carImage.ImagePath += "default.jpg";
@@ -51,7 +51,7 @@ namespace Business.Concrete
 
         public IResult Delete(CarImage carImage)
         {
-            _fileHelper.Delete(@"wwwroot\\Uploads\\Images\\" + carImage.ImagePath);
+            _fileHelper.Delete(@"wwwroot\\Images\\" + carImage.ImagePath);
             _carImageDal.Delete(carImage);
             return new SuccessResult();
         }
@@ -81,8 +81,8 @@ namespace Business.Concrete
         public IResult Update(List<IFormFile> formFile, CarImage carImage)
         {
             var result = _carImageDal.Get(c => c.Id == carImage.Id);
-            carImage.ImagePath = _fileHelper.Update(formFile, @"wwwroot\\Uploads\\Images\\" + result.ImagePath,
-                @"wwwroot\\Uploads\\Images\\");
+            carImage.ImagePath = _fileHelper.Update(formFile, @"wwwroot\\Images\\" + result.ImagePath,
+                @"wwwroot\\Images\\");
             _carImageDal.Update(carImage);
             return new SuccessResult();
         }
