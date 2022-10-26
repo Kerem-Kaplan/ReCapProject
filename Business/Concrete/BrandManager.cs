@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.BusinessAspects.Autofac;
+using Core.Aspect.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -25,6 +26,7 @@ namespace Business.Concrete
 
         [SecuredOperation("brand.add,admin")]
         [ValidationAspect(typeof(BrandValidator))]
+        [CacheRemoveAspect("IBrandService.Get")]
         public IResult Add(Brand brand)
         {
            
@@ -39,16 +41,19 @@ namespace Business.Concrete
 
         }
 
+        [CacheAspect()]
         public IDataResult<List<Brand>> GetAll()
         {
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), BrandMessages.BrandListed);
         }
-
+        [CacheAspect()]
         public IDataResult<Brand> GetById(int brandId)
         {
             return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId));
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
+        [CacheRemoveAspect("IBrandService.Get")]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);

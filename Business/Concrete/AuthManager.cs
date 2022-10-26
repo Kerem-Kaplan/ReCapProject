@@ -29,6 +29,7 @@ namespace Business.Concrete
             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
             var user = new User
             {
+
                 Email = userForRegisterDto.Email,
                 FirstName = userForRegisterDto.FirstName,
                 LastName = userForRegisterDto.LastName,
@@ -58,10 +59,10 @@ namespace Business.Concrete
 
         public IResult UserExists(string email)
         {
-            if (_userService.GetByEmail(email) != null)
-            {
-                return new ErrorResult("Zaten kayıtlı");
-            }
+            //if (_userService.GetByEmail(email) != null)
+            //{
+            //    return new ErrorResult("Zaten kayıtlı");
+            //}
             return new SuccessResult();
         }
 
